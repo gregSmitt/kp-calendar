@@ -1,0 +1,31 @@
+.kp-counter{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__col{}
+    &__title{}
+    &__desc{
+        color: #9F9F9F;
+    }
+    &__row{
+        display: flex;
+        justify-content: space-between;
+        margin-left: 16px;
+    }
+    &__decrease{}
+    &__value{
+        width: 32px;
+        text-align: center;
+        margin: 0px 8px;
+    }
+    &__decrease,
+    &__increase{
+        cursor: pointer;
+        &.disable{
+            cursor:auto;
+        }
+    }
+    &+.kp-counter{
+        margin-top: 24px;
+    }
+}
