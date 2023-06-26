@@ -179,3 +179,13 @@
 	font-size: 20px;
 	line-height: 24px;
 }
+.searchHotel__wrapper{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+@media (min-width: 881px) {
+	.searchHotel__wrapper{
+		flex-wrap: nowrap;
+	}
+}

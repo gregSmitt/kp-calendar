@@ -8,7 +8,7 @@ import { useWindowSize } from "../hooks";
 const KPDatePicker = ({close, classMarker, setDates, startDate, endDate, maxDate})=>{ 
   const size = useWindowSize();
   const detectOrientation = () =>{
-    if (size.width < 1160) return true;
+    if (size.width < 881) return true;
       return false;
   }
   const datePickerRef = useRef(null)

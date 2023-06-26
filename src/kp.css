@@ -1,3 +1,7 @@
+
+
+
+
 .searchHotel {
     background: #F5F5F5;
     border-radius: 12px;
@@ -249,3 +253,327 @@
   .searchHotel__body-item{
     cursor: pointer;
   }
+
+
+
+@media screen and (max-width: 598px) {
+  .mainBanner__container {
+    padding: 24px;
+  }
+
+  .mainBanner__description-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .section-wrapper_revert .discount__picture {
+    background-size: auto 100%;
+  }
+
+  .searchHotel__body-item:nth-child(2) .qs-datepicker-container {
+    left: auto !important;
+    right: 0;
+  }
+}
+@media screen and (max-width: 392px) {
+  .searchHotel {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .searchHotel__header {
+    padding: 0 0 16px;
+  }
+
+  .searchHotel__header-details {
+    padding: 0 0 0 16px;
+  }
+
+  .searchHotel__body {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .searchHotel__body-item:nth-child(1) {
+    width: calc(50% - 4px);
+    margin: 0 8px 8px 0;
+  }
+
+  .searchHotel__body-item:nth-child(2) {
+    width: calc(50% - 4px);
+    margin: 0 0 8px;
+  }
+
+  .searchHotel__body-item:nth-child(3) {
+    width: 100%;
+    margin: 0 0 8px;
+  }
+
+  .searchHotel__body-select {
+    width: 100%;
+  }
+
+  .searchHotel__body-input {
+    width: 100%;
+  }
+
+  .searchHotel__body-btn {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1441px) {
+  .searchHotel__header-details {
+    padding: 0 37px 0 16px;
+  }
+}
+  
+@media screen and (max-width: 1440px) and (min-width: 1273px) {
+  .searchHotel {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+
+  .searchHotel__header-details {
+    padding: 0 0 0 16px;
+  }
+
+  .searchHotel__body-select {
+    width: 227px;
+  }
+}
+
+
+@media screen and (max-width: 1272px) and (min-width: 1161px) {
+  .searchHotel {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .searchHotel__header {
+    padding: 0 0 16px;
+  }
+
+  .searchHotel__body-select {
+    width: 432px;
+  }
+
+  .searchHotel__body-input {
+    width: 155px;
+  }
+}
+
+@media screen and (max-width: 1160px) and (min-width: 881px) {
+  .searchHotel {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .searchHotel__header {
+    padding: 0 0 16px;
+  }
+
+  .searchHotel__body-select {
+    width: 245px;
+  }
+
+  .searchHotel__body-input {
+    width: 145px;
+  }
+}
+
+@media screen and (max-width: 880px) and (min-width: 599px) {
+  .searchHotel {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .searchHotel__header {
+    padding: 0 0 16px;
+  }
+
+  .searchHotel__header-details {
+    padding: 0 0 0 16px;
+  }
+
+  .searchHotel__body {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .searchHotel__body-item:nth-child(1) {
+    width: calc(50% - 4px);
+    margin: 0 8px 8px 0;
+  }
+
+  .searchHotel__body-item:nth-child(2) {
+    width: calc(50% - 4px);
+    margin: 0 0 8px;
+  }
+
+  .searchHotel__body-item:nth-child(3) {
+    width: 100%;
+    margin: 0 0 8px;
+  }
+
+  .searchHotel__body-select {
+    width: 100%;
+  }
+
+  .searchHotel__body-input {
+    width: 100%;
+  }
+
+  .searchHotel__body-btn {
+    width: 100%;
+    margin: 0;
+  }
+
+}
+
+@media screen and (max-width: 598px) and (min-width: 393px) {
+  .searchHotel {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .searchHotel__header {
+    padding: 0 0 16px;
+  }
+
+  .searchHotel__header-details {
+    padding: 0 0 0 16px;
+  }
+
+  .searchHotel__body {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .searchHotel__body-item:nth-child(1) {
+    width: calc(50% - 4px);
+    margin: 0 8px 8px 0;
+  }
+
+  .searchHotel__body-item:nth-child(2) {
+    width: calc(50% - 4px);
+    margin: 0 0 8px;
+  }
+
+  .searchHotel__body-item:nth-child(3) {
+    width: 100%;
+    margin: 0 0 8px;
+  }
+
+  .searchHotel__body-select {
+    width: 100%;
+  }
+
+  .searchHotel__body-input {
+    width: 100%;
+  }
+
+  .searchHotel__body-btn {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+
+
+.container {
+  padding: 48px 32px;
+  @include wrapper;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.container {
+  padding: 48px 32px;
+  @include wrapper;
+  border-bottom: 1px solid #F5F5F5;
+  margin: 0 auto;
+}
+@media screen and (max-width: 1160px) and (min-width: 881px) {
+  .container{
+    padding: 32px;
+  }
+}
+@media screen and (max-width: 880px) and (min-width:599px) {
+  .container{
+    padding: 36px 32px;
+  }
+}
+@media screen and (max-width: 598px) and (min-width:393px) {
+  .container{
+    padding: 32px 24px;
+    overflow: hidden;
+  }
+}
+@media screen and (max-width: 392px) {
+  .container{
+    padding: 32px 24px;
+    overflow: hidden;
+  }
+}
+@media screen and (min-width: 1601px) {
+  .container{
+    width: 1600px;
+  }
+}
+@media screen and (max-width: 1600px) and (min-width:1440px) {
+  .container{
+    width: 1440px;
+  }
+}
+@media screen and (max-width: 1439px) and (min-width:1273px) {
+    .container{
+      width: 1272px;
+    }
+}
+@media screen and (max-width: 1272px) and (min-width:1161px) {
+    .container{
+      width: 1160px;
+    }
+}
+@media screen and (max-width: 1160px) and (min-width:881px) {
+    .container{
+      width: 880px;
+    }
+}
+@media screen and (max-width: 880px) and (min-width:599px) {
+  .container{
+    width: 598px;
+  }
+}
+@media screen and (max-width: 598px) and (min-width:393px) {
+  .container{
+    width: 392px;
+  }
+}
+@media screen and (max-width: 392px) {
+  .container{
+    width: 360px;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  overflow-y: clip;
+  overflow-x: clip;
+}
+
+.relative{
+  position: relative;
+}

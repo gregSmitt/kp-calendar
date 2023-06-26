@@ -109,40 +109,42 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="searchHotel__body">
-        <div className="searchHotel__body-item kp-calendar-marker" onClick={openCalendar}>
-            <span className="searchHotel__body-label kp-calendar-marker">Прибытие</span>
+      <div className="searchHotel__body relative">
+        <div className="searchHotel__wrapper relative">
+          <div className="searchHotel__body-item kp-calendar-marker" onClick={openCalendar}>
+              <span className="searchHotel__body-label kp-calendar-marker">Прибытие</span>
+              <div
+                  className="searchHotel__body-input kp-calendar-marker"
+              >{firstDateStr}</div>
+          </div>
+          <div className="searchHotel__body-item kp-calendar-marker" onClick={openCalendar}>
+            <span className="searchHotel__body-label kp-calendar-marker">Выезд</span>
             <div
-                className="searchHotel__body-input kp-calendar-marker"
-            >{firstDateStr}</div>
-            {isCalendarOpen && <KPDatePicker 
-                isOpen={isCalendarOpen}
-                close={closeCalendar}
-                setDates={setDates}
-                startDate={firstDate}
-                endDate={secondDate}
-                maxDate={maxDate}
-                // маркер нужен для предотвращения конфликта при открытии календаря:
-                // без него при нажатии на кнопку календарь сначала закрывается, а потом сразу открывается,
-                // так как он должен закрываться при нажатии мимо и открываться при нажатии на кнопку, при этом кнопка = мимо
-                classMarker = {'kp-calendar-marker'}
-            />}
-        </div>
-        <div className="searchHotel__body-item kp-calendar-marker" onClick={openCalendar}>
-          <span className="searchHotel__body-label kp-calendar-marker">Выезд</span>
-          <div
-            className="searchHotel__body-input kp-calendar-marker"
-          >{secondDateStr}</div>
-        </div>
-        <div className="searchHotel__body-item kp-guests-panel-marker" onClick={openGuestsPanel}>
-          <div className="booking-form-section booking-form-section_guests kp-guests-panel-marker">
-            <div className="booking-form-section__container kp-guests-panel-marker">
-              <div className="booking-form-section__title kp-guests-panel-marker">Гости</div>
-              <div className="booking-form-section__value kp-guests-panel-marker">
-                <div className="booking-form-section__value kp-guests-panel-marker">{guestsString}</div>
+              className="searchHotel__body-input kp-calendar-marker"
+            >{secondDateStr}</div>
+          </div>
+          <div className="searchHotel__body-item kp-guests-panel-marker" onClick={openGuestsPanel}>
+            <div className="booking-form-section booking-form-section_guests kp-guests-panel-marker">
+              <div className="booking-form-section__container kp-guests-panel-marker">
+                <div className="booking-form-section__title kp-guests-panel-marker">Гости</div>
+                <div className="booking-form-section__value kp-guests-panel-marker">
+                  <div className="booking-form-section__value kp-guests-panel-marker">{guestsString}</div>
+                </div>
               </div>
             </div>
           </div>
+          {isCalendarOpen && <KPDatePicker 
+              isOpen={isCalendarOpen}
+              close={closeCalendar}
+              setDates={setDates}
+              startDate={firstDate}
+              endDate={secondDate}
+              maxDate={maxDate}
+              // маркер нужен для предотвращения конфликта при открытии календаря:
+              // без него при нажатии на кнопку календарь сначала закрывается, а потом сразу открывается,
+              // так как он должен закрываться при нажатии мимо и открываться при нажатии на кнопку, при этом кнопка = мимо
+              classMarker = {'kp-calendar-marker'}
+          />}
           {isGuestsPanelOpen && <Guests 
                 closeFunction={closeGuestsPanel}
                 classMarker = {'kp-guests-panel-marker'}
