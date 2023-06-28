@@ -9,6 +9,7 @@
       name="description"
       content="Web site created using create-react-app"
     />
+    <link rel="stylesheet" href="./styleKp.css">
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -34,7 +35,544 @@
           const maxDate = new Date(2026, 0, 13);
           const baseUrl = 'https://krasnayapolyanaresort.ru/'
         </script>
-        <div id="booking-calendar"></div>
+        <section class="section">
+          <div class="section__content">
+             <div class="hotels hotels_list">
+                <div class="searchColumn">
+                  
+                    <div id="booking-calendar"></div>
+                   <form method="GET" action="/hotels/" test="hotels" class="js-booking-form searchHotel">
+                      <div class="searchHotel__header">
+                         <div class="searchHotel__header-icon"></div>
+                         <div class="searchHotel__header-details">
+                            <div class="searchHotel__header-title">Подберите отель</div>
+                            <div class="searchHotel__header-description">Бронируйте номер по выгодной цене</div>
+                         </div>
+                      </div>
+                      <div class="searchHotel__body">
+                         <label class="searchHotel__body-item">
+                            <span class="searchHotel__body-label">Прибытие</span> <input class="searchHotel__body-input js-start-date" name="date" value="28.06.2023" type="text" inputmode="text"> 
+                         </label>
+                         <label class="searchHotel__body-item">
+                            <span class="searchHotel__body-label">Выезд</span> <input class="searchHotel__body-input js-end-date" name="date_out" value="29.06.2023" type="text" inputmode="text"> 
+                         </label>
+                         <label class="searchHotel__body-item">
+                            <div class="booking-form-section booking-form-section_guests">
+                               <div class="booking-form-section__container">
+                                  <div class="booking-form-section__title">Гости</div>
+                                  <div class="booking-form-section__value"> <input data-children-age="" data-adults="" value="2 взрослых" type="text" class="js-booking-input searchHotel__body-text"> </div>
+                               </div>
+                            </div>
+                         </label>
+                         <button class="searchHotel__body-btn" type="submit"> Подобрать </button> 
+                      </div>
+                   </form>
+                   <div class="searchMobileBtns">
+                      <div class="searchMobileBtn searchMobileBtn_filter" data-featherlight="#hotels-filter"><i></i>Фильтр</div>
+                      <div class="searchMobileBtn searchMobileBtn_sort" data-featherlight="#hotels-sort"><i></i>Сортировка</div>
+                   </div>
+                   <div class="searchFilter">
+                      <div class="searchFilter-wrapper">
+                         <div class="searchFilter__item searchFilter__item_sort" id="hotels-sort">
+                            <div class="searchFilter__item-title"> Сортировка </div>
+                            <div class="searchFilter__item-dropdown"> <label class="searchFilter__item-radio radio"> <input name="sort" type="radio" class="js-sort" data-sort-field="reviews_count" data-direction="desc"><span>Количество отзывов по убыванию</span> </label> <label class="searchFilter__item-radio radio"> <input name="sort" type="radio" class="js-sort" data-sort-field="reviews_count" data-direction="asc"><span>Количество отзывов по возрастанию</span> </label> <label class="searchFilter__item-radio radio"> <input name="sort" type="radio" class="js-sort" data-sort-field="rating" data-direction="desc"><span>Рейтинг по убыванию</span> </label> <label class="searchFilter__item-radio radio"> <input name="sort" type="radio" class="js-sort" data-sort-field="rating" data-direction="asc"><span>Рейтинг по возрастанию</span> </label> </div>
+                         </div>
+                         <div class="searchFilter__item searchFilter__item_filter" id="hotels-filter">
+                            <div class="searchFilter__item-title"> Фильтр </div>
+                            <div class="searchFilter__item-block searchFilter__item-block_accommodation">
+                               <div class="searchFilter__item-subtitle"> Тип размещения </div>
+                               <div class="searchFilter__item-dropdown"> <label class="searchFilter__item-checkbox checkbox"> <input name="accommodation" class="js-filter js-filter-accommodation" type="checkbox" value="Отели"><span>Отели</span><span class="checkbox__counter">9</span> </label> <label class="searchFilter__item-checkbox checkbox"> <input name="accommodation" class="js-filter js-filter-accommodation" type="checkbox" value="Апартаменты"><span>Апартаменты</span><span class="checkbox__counter">1</span> </label> </div>
+                            </div>
+                            <div class="searchFilter__item-block searchFilter__item-block_stars">
+                               <div class="searchFilter__item-subtitle"> Количество звезд <span>Звезды</span> </div>
+                               <div class="searchFilter__item-dropdown"> <label class="searchFilter__item-checkbox checkbox"> <input name="stars" class="js-filter js-filter-stars" type="checkbox" value="1 звезда"><span>1 звезда</span><span class="checkbox__counter">1</span> </label> <label class="searchFilter__item-checkbox checkbox"> <input name="stars" class="js-filter js-filter-stars" type="checkbox" value="4 звезды"><span>4 звезды</span><span class="checkbox__counter">5</span> </label> <label class="searchFilter__item-checkbox checkbox"> <input name="stars" class="js-filter js-filter-stars" type="checkbox" value="5 звезд"><span>5 звезд</span><span class="checkbox__counter">4</span> </label> </div>
+                            </div>
+                            <div class="searchFilter__item-block searchFilter__item-block_location">
+                               <div class="searchFilter__item-subtitle"> Расположение </div>
+                               <div class="searchFilter__item-dropdown"> <label class="searchFilter__item-checkbox checkbox"> <input name="place" class="js-filter js-filter-place" type="checkbox" value="Поляна 540"><span>Поляна 540</span><span class="checkbox__counter">3</span> </label> <label class="searchFilter__item-checkbox checkbox"> <input name="place" class="js-filter js-filter-place" type="checkbox" value="Поляна 960"><span>Поляна 960</span><span class="checkbox__counter">8</span> </label> </div>
+                            </div>
+                            <div class="searchFilter__item-block searchFilter__item-block_facilities">
+                               <div class="searchFilter__item-subtitle"> Дополнительные удобства </div>
+                               <label class="searchFilter__item-checkbox checkbox"> <input name="additional_benefits" class="js-filter js-filter-additional_benefits" type="checkbox" value="Спа-центр"><span>Спа-центр</span><span class="checkbox__counter">3</span> </label> <label class="searchFilter__item-checkbox checkbox"> <input name="additional_benefits" class="js-filter js-filter-additional_benefits" type="checkbox" value="Крытый бассейн"><span>Крытый бассейн</span><span class="checkbox__counter">5</span> </label> <label class="searchFilter__item-checkbox checkbox"> <input name="additional_benefits" class="js-filter js-filter-additional_benefits" type="checkbox" value="Открытый бассейн"><span>Открытый бассейн</span><span class="checkbox__counter">3</span> </label> <label class="searchFilter__item-checkbox checkbox"> <input name="additional_benefits" class="js-filter js-filter-additional_benefits" type="checkbox" value="Тренажерный зал"><span>Тренажерный зал</span><span class="checkbox__counter">8</span> </label> <label class="searchFilter__item-checkbox checkbox"> <input name="additional_benefits" class="js-filter js-filter-additional_benefits" type="checkbox" value="Сауна"><span>Сауна</span><span class="checkbox__counter">7</span> </label> <label class="searchFilter__item-checkbox checkbox"> <input name="additional_benefits" class="js-filter js-filter-additional_benefits" type="checkbox" value="Ski-in &amp; Ski-out"><span>Ski-in &amp; Ski-out</span><span class="checkbox__counter">1</span> </label> <label class="searchFilter__item-checkbox checkbox"> <input name="additional_benefits" class="js-filter js-filter-additional_benefits" type="checkbox" value="Детская комната с воспитателем"><span>Детская комната с воспитателем</span><span class="checkbox__counter">3</span> </label> <label class="searchFilter__item-checkbox checkbox"> <input name="additional_benefits" class="js-filter js-filter-additional_benefits" type="checkbox" value="Детская комната без воспитателя"><span>Детская комната без воспитателя</span><span class="checkbox__counter">1</span> </label> <label class="searchFilter__item-checkbox checkbox"> <input name="additional_benefits" class="js-filter js-filter-additional_benefits" type="checkbox" value="Игровые пространства"><span>Игровые пространства</span><span class="checkbox__counter">1</span> </label> <label class="searchFilter__item-checkbox checkbox"> <input name="additional_benefits" class="js-filter js-filter-additional_benefits" type="checkbox" value="Вид на горы"><span>Вид на горы</span><span class="checkbox__counter">10</span> </label> 
+                            </div>
+                            <div class="searchFilter__item-btns"> <button class="searchFilter__item-reset js-filter-reset" type="reset">Очистить <span>фильтр</span></button> <button class="searchFilter__item-apply" type="button">Применить</button> </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="hotelList hotelList_list">
+                   <script> booking = JSON.parse('[{"hotel_id":1,"room_type_id":131,"min_price":"13230"},{"hotel_id":2,"room_type_id":58,"min_price":"14560"},{"hotel_id":3,"room_type_id":20,"min_price":"5700"},{"hotel_id":4,"room_type_id":36,"min_price":"9940"},{"hotel_id":5,"room_type_id":42,"min_price":"10640"},{"hotel_id":6,"room_type_id":77,"min_price":"6125"},{"hotel_id":7,"room_type_id":83,"min_price":"5350"},{"hotel_id":8,"room_type_id":155,"min_price":"7210"},{"hotel_id":9,"room_type_id":107,"min_price":"6370"},{"hotel_id":10,"room_type_id":116,"min_price":"3640"}]'); function priceButtonText(hotelId) { if (booking) { for (let i = 0; i < booking.length; i++) { if (booking[i].hotel_id == hotelId) { return 'Забронировать от ' + booking[i].min_price + ' ₽'; } } } return "Подробнее"; } </script> 
+                   <div class="hotelItem" data-id="45" data-accommodation="[Апартаменты]" data-stars="[1 звезда]" data-place="[`Поляна 960,Поляна 540]`" data-additional_benefits="[Вид на горы]" data-rating="5" data-reviews_count="2">
+                      <div class="hotelItem__header">
+                         <div class="layout__header-tags"> <span class="layout__header-label"> Поляна 960 Поляна 540 </span> <span class="layout__header-label layout__header-label_card"></span> <span class="layout__header-label layout__header-label_recom">Рекомендуем</span> </div>
+                         <div class="layout__images">
+                            <div class="swiper-inner js-slider-inner swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                               <div class="swiper-wrapper" id="swiper-wrapper-8c21ec88cee1a8f5" aria-live="polite" style="cursor: grab; transform: translate3d(0px, 0px, 0px);">
+                                  <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 6"> <img src="/assets/components/phpthumbof/cache/apartments_fasad_summer_2023_2.e205a62be81a7d36dd4c24b6a8fb5531.jpg"> </div>
+                                  <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 6"> <img src="/assets/components/phpthumbof/cache/apartments_summer_people.e205a62be81a7d36dd4c24b6a8fb5531.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="3 / 6"> <img src="/assets/components/phpthumbof/cache/apartments_summer_people_2.e205a62be81a7d36dd4c24b6a8fb5531.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="4 / 6"> <img src="/assets/components/phpthumbof/cache/apartments_summer_1.e205a62be81a7d36dd4c24b6a8fb5531.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="5 / 6"> <img src="/assets/components/phpthumbof/cache/apartments_summer_2.e205a62be81a7d36dd4c24b6a8fb5531.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="6 / 6"> <img src="/assets/components/phpthumbof/cache/apart_fasad_summer.e205a62be81a7d36dd4c24b6a8fb5531.jpg"> </div>
+                               </div>
+                               <div class="swiper-pagination">
+                                  <div class="swiper-pagination__wrapper swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+                               </div>
+                               <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__body">
+                         <div class="hotelItem__body-title"> Апартаменты Курорта Красная Поляна </div>
+                         <div class="hotelItem__body-description"> </div>
+                         <div class="hotelItem__body-icons">
+                            <div class="hotelItem__body-stars"> <i class="hotelItem__body-star hotelItem__body-star_1"></i> </div>
+                            <div class="hotelItem__body-grade"> 5 </div>
+                            <div class="hotelItem__body-reviews"> 2 отзывов </div>
+                         </div>
+                         <div class="hotelItem__body-tags">
+                            <div class="hotelItem__body-tag hotelItem__body-tag_"></div>
+                         </div>
+                         <div class="hotelItem__body-text"> Подстройте отдых под свой ритм. Проживание в апартаментах и таунхаусах отлично подойдёт для уединённого отдыха, отпуска с семьёй, путешествия дружной компанией или для длительного проживания и удалённой работы во вдохновляющей атмосфере гор. Комплекс апартаментов расположился на Поляне 540 и Поляне 960. </div>
+                         <div class="hotelItem__body-details">
+                            <div class="hotelItem__body-details-icons"> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/wifi.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Dog_24.svg)"></i> </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__footer">
+                         <a href="https://krasnayapolyanaresort.ru/apartamentyi_kurorta_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="10"> Об отеле </a> 
+                         <a href="https://shop.krasnayapolyanaresort.ru/hotels/apartamentyi_kurorta_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="10">
+                            <script> if (!window.priceDone) { document.write(priceButtonText(10)); } </script>Забронировать от 3640 ₽ 
+                         </a>
+                      </div>
+                   </div>
+                   <div class="hotelItem" data-id="46" data-accommodation="[Отели]" data-stars="[5 звезд]" data-place="[`Поляна 960]`" data-additional_benefits="[Сауна,Тренажерный зал,Детская комната без воспитателя,Крытый бассейн,Вид на горы]" data-rating="5" data-reviews_count="4">
+                      <div class="hotelItem__header">
+                         <div class="layout__header-tags"> <span class="layout__header-label"> Поляна 960 </span> <span class="layout__header-label layout__header-label_card"></span> <span class="layout__header-label layout__header-label_recom">Рекомендуем</span> </div>
+                         <div class="layout__images">
+                            <div class="swiper-inner js-slider-inner swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                               <div class="swiper-wrapper" id="swiper-wrapper-10375bda68a747951" aria-live="polite" style="cursor: grab; transform: translate3d(0px, 0px, 0px);">
+                                  <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"> <img src="/assets/components/phpthumbof/cache/movenpick_fasad_summer.53b0bd210f89fba2e019dde5658ad2b5.jpg"> </div>
+                                  <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 10"> <img src="/assets/components/phpthumbof/cache/g1_movenpick_room.53b0bd210f89fba2e019dde5658ad2b5.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="3 / 10"> <img src="/assets/components/phpthumbof/cache/g1_movenpick_room_03.53b0bd210f89fba2e019dde5658ad2b5.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="4 / 10"> <img src="/assets/components/phpthumbof/cache/g1_movenpick_room_04.53b0bd210f89fba2e019dde5658ad2b5.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="5 / 10"> <img src="/assets/components/phpthumbof/cache/g8_movenpick_bar.53b0bd210f89fba2e019dde5658ad2b5.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="6 / 10"> <img src="/assets/components/phpthumbof/cache/g8_movenpick_breakfast_01.53b0bd210f89fba2e019dde5658ad2b5.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="7 / 10"> <img src="/assets/components/phpthumbof/cache/g8_movenpick_breakfast_02.53b0bd210f89fba2e019dde5658ad2b5.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="8 / 10"> <img src="/assets/components/phpthumbof/cache/g8_movenpick_breakfast_03.53b0bd210f89fba2e019dde5658ad2b5.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="9 / 10"> <img src="/assets/components/phpthumbof/cache/g8_movenpick_breakfast_04.53b0bd210f89fba2e019dde5658ad2b5.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="10 / 10"> <img src="/assets/components/phpthumbof/cache/rest_russki_1.53b0bd210f89fba2e019dde5658ad2b5.jpg"> </div>
+                               </div>
+                               <div class="swiper-pagination">
+                                  <div class="swiper-pagination__wrapper swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+                               </div>
+                               <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__body">
+                         <div class="hotelItem__body-title"> Мовенпик Красная Поляна </div>
+                         <div class="hotelItem__body-description"> Швейцарские традиции и гастротуризм </div>
+                         <div class="hotelItem__body-icons">
+                            <div class="hotelItem__body-stars"> <i class="hotelItem__body-star hotelItem__body-star_5"></i> </div>
+                            <div class="hotelItem__body-grade"> 5 </div>
+                            <div class="hotelItem__body-reviews"> 4 отзывов </div>
+                         </div>
+                         <div class="hotelItem__body-tags">
+                            <div class="hotelItem__body-tag hotelItem__body-tag_"></div>
+                         </div>
+                         <div class="hotelItem__body-text"> Очарование безупречной Швейцарии в отеле премиум-класса бренда Mövenpick – это множество счастливых мгновений вашего уединённого отдыха в горах. Особая философия основана на рождении впечатлений и персональном подходе к каждому гостю. </div>
+                         <div class="hotelItem__body-details">
+                            <div class="hotelItem__body-details-icons"> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/wifi.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/SwimmingPool_16.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Dog_24.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Spa_16.svg)"></i> </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__footer">
+                         <a href="https://krasnayapolyanaresort.ru/movenpick_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="5"> Об отеле </a> 
+                         <a href="https://shop.krasnayapolyanaresort.ru/hotels/movenpick_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="5">
+                            <script> if (!window.priceDone) { document.write(priceButtonText(5)); } </script>Забронировать от 10640 ₽ 
+                         </a>
+                      </div>
+                   </div>
+                   <div class="hotelItem" data-id="47" data-accommodation="[Отели]" data-stars="[5 звезд]" data-place="[`Поляна 540]`" data-additional_benefits="[Открытый бассейн,Сауна,Тренажерный зал,Детская комната с воспитателем,Крытый бассейн,Спа-центр,Вид на горы]" data-rating="5" data-reviews_count="2">
+                      <div class="hotelItem__header">
+                         <div class="layout__header-tags"> <span class="layout__header-label"> Поляна 540 </span> <span class="layout__header-label layout__header-label_card"></span> <span class="layout__header-label layout__header-label_recom">Рекомендуем</span> </div>
+                         <div class="layout__images">
+                            <div class="swiper-inner js-slider-inner swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                               <div class="swiper-wrapper" id="swiper-wrapper-a9fb1c66c9a587b2" aria-live="polite" style="cursor: grab; transform: translate3d(0px, 0px, 0px);">
+                                  <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"> <img src="/assets/components/phpthumbof/cache/marriott_facade_summer_1.b291b574cdd4e717e069f232f5e72c7a.jpg"> </div>
+                                  <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 10"> <img src="/assets/components/phpthumbof/cache/marriott_pool_summer_family_1.b291b574cdd4e717e069f232f5e72c7a.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="3 / 10"> <img src="/assets/components/phpthumbof/cache/soul_spa_april_2023_8.b291b574cdd4e717e069f232f5e72c7a.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="4 / 10"> <img src="/assets/components/phpthumbof/cache/marriott_soul_spa_dec_2022_10.b291b574cdd4e717e069f232f5e72c7a.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="5 / 10"> <img src="/assets/components/phpthumbof/cache/g8_marriott_soul_spa_02.b291b574cdd4e717e069f232f5e72c7a.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="6 / 10"> <img src="/assets/components/phpthumbof/cache/g1_marriott_pool_03.b291b574cdd4e717e069f232f5e72c7a.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="7 / 10"> <img src="/assets/components/phpthumbof/cache/g8_marriott_soul_spa_05.b291b574cdd4e717e069f232f5e72c7a.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="8 / 10"> <img src="/assets/components/phpthumbof/cache/g8_marriott_soul_spa_01.b291b574cdd4e717e069f232f5e72c7a.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="9 / 10"> <img src="/assets/components/phpthumbof/cache/marriott_spa_2022_12.b291b574cdd4e717e069f232f5e72c7a.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="10 / 10"> <img src="/assets/components/phpthumbof/cache/marriott_spa_2022_2.b291b574cdd4e717e069f232f5e72c7a.jpg"> </div>
+                               </div>
+                               <div class="swiper-pagination">
+                                  <div class="swiper-pagination__wrapper swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+                               </div>
+                               <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__body">
+                         <div class="hotelItem__body-title"> Сочи Марриотт Красная Поляна </div>
+                         <div class="hotelItem__body-description"> Спа-отель премиум класса и казино </div>
+                         <div class="hotelItem__body-icons">
+                            <div class="hotelItem__body-stars"> <i class="hotelItem__body-star hotelItem__body-star_5"></i> </div>
+                            <div class="hotelItem__body-grade"> 5 </div>
+                            <div class="hotelItem__body-reviews"> 2 отзывов </div>
+                         </div>
+                         <div class="hotelItem__body-tags">
+                            <div class="hotelItem__body-tag hotelItem__body-tag_"></div>
+                         </div>
+                         <div class="hotelItem__body-text"> Премиальный отдых в горах, игорный туризм уровня «пять звёзд», многофункциональный Wellness &amp; SPA, гастрономические приключения – эти и другие возможности откроют для себя истинные ценители роскоши, которые доверяют бренду. </div>
+                         <div class="hotelItem__body-details">
+                            <div class="hotelItem__body-details-icons"> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/wifi.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/SwimmingPool_16.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Dog_24.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Spa_16.svg)"></i> </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__footer">
+                         <a href="https://krasnayapolyanaresort.ru/sochi_marriott_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="2"> Об отеле </a> 
+                         <a href="https://shop.krasnayapolyanaresort.ru/hotels/sochi_marriott_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="2">
+                            <script> if (!window.priceDone) { document.write(priceButtonText(2)); } </script>Забронировать от 14560 ₽ 
+                         </a>
+                      </div>
+                   </div>
+                   <div class="hotelItem" data-id="48" data-accommodation="[Отели]" data-stars="[5 звезд]" data-place="[`Поляна 960]`" data-additional_benefits="[Тренажерный зал,Сауна,Детская комната с воспитателем,Крытый бассейн,Спа-центр,Вид на горы]" data-rating="5" data-reviews_count="0">
+                      <div class="hotelItem__header">
+                         <div class="layout__header-tags"> <span class="layout__header-label"> Поляна 960 </span> <span class="layout__header-label layout__header-label_card"></span> <span class="layout__header-label layout__header-label_recom">Рекомендуем</span> </div>
+                         <div class="layout__images">
+                            <div class="swiper-inner js-slider-inner swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                               <div class="swiper-wrapper" id="swiper-wrapper-61ed90faa6a824aa" aria-live="polite" style="cursor: grab; transform: translate3d(0px, 0px, 0px);">
+                                  <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"> <img src="/assets/components/phpthumbof/cache/rixos_facade_summer.b87fd740429b34b0675d77162bb0182f.jpg"> </div>
+                                  <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 10"> <img src="/assets/components/phpthumbof/cache/rixos_spa_2022_demchenko_10.b87fd740429b34b0675d77162bb0182f.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="3 / 10"> <img src="/assets/components/phpthumbof/cache/rixos_spa_abonement_3.b87fd740429b34b0675d77162bb0182f.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="4 / 10"> <img src="/assets/components/phpthumbof/cache/rixos_spa_abonement_1.b87fd740429b34b0675d77162bb0182f.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="5 / 10"> <img src="/assets/components/phpthumbof/cache/rixos_spa_2022_demchenko_8.b87fd740429b34b0675d77162bb0182f.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="6 / 10"> <img src="/assets/components/phpthumbof/cache/rixos_spa_2022_demchenko_7.b87fd740429b34b0675d77162bb0182f.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="7 / 10"> <img src="/assets/components/phpthumbof/cache/rixos_spa_2022_demchenko_19.b87fd740429b34b0675d77162bb0182f.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="8 / 10"> <img src="/assets/components/phpthumbof/cache/rixos_spa_2022_demchenko_9.b87fd740429b34b0675d77162bb0182f.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="9 / 10"> <img src="/assets/components/phpthumbof/cache/rixos_spa_2022_demchenko_2.b87fd740429b34b0675d77162bb0182f.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="10 / 10"> <img src="/assets/components/phpthumbof/cache/g8_rixos_hammam.b87fd740429b34b0675d77162bb0182f.jpg"> </div>
+                               </div>
+                               <div class="swiper-pagination">
+                                  <div class="swiper-pagination__wrapper swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+                               </div>
+                               <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__body">
+                         <div class="hotelItem__body-title"> Риксос Красная Поляна Сочи </div>
+                         <div class="hotelItem__body-description"> Роскошный отдых и королевский спа в горах </div>
+                         <div class="hotelItem__body-icons">
+                            <div class="hotelItem__body-stars"> <i class="hotelItem__body-star hotelItem__body-star_5"></i> </div>
+                            <div class="hotelItem__body-grade"> 5 </div>
+                            <div class="hotelItem__body-reviews"> 0 отзывов </div>
+                         </div>
+                         <div class="hotelItem__body-tags">
+                            <div class="hotelItem__body-tag hotelItem__body-tag_"></div>
+                         </div>
+                         <div class="hotelItem__body-text"> Все привилегии элитного отдыха в горах и персонализированный сервис – основа гостеприимства бренда Rixos. Пятизвёздочный отель всемирно известной турецкой гостиничной сети обладает рекордным количеством международных наград и премий World Luxury Hotel Awards, World Ski Awards, World Spa Awards. </div>
+                         <div class="hotelItem__body-details">
+                            <div class="hotelItem__body-details-icons"> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/wifi.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/SwimmingPool_16.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Dog_24.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Spa_16.svg)"></i> </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__footer">
+                         <a href="https://krasnayapolyanaresort.ru/rixos_krasnaya_polyana_sochi/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="1"> Об отеле </a> 
+                         <a href="https://shop.krasnayapolyanaresort.ru/hotels/rixos_krasnaya_polyana_sochi/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="1">
+                            <script> if (!window.priceDone) { document.write(priceButtonText(1)); } </script>Забронировать от 13230 ₽ 
+                         </a>
+                      </div>
+                   </div>
+                   <div class="hotelItem" data-id="49" data-accommodation="[Отели]" data-stars="[5 звезд]" data-place="[`Поляна 960]`" data-additional_benefits="[Тренажерный зал,Сауна,Открытый бассейн,Вид на горы,Ski-in]" data-rating="5" data-reviews_count="1">
+                      <div class="hotelItem__header">
+                         <div class="layout__header-tags"> <span class="layout__header-label"> Поляна 960 </span> <span class="layout__header-label layout__header-label_card"></span> <span class="layout__header-label layout__header-label_recom">Рекомендуем</span> </div>
+                         <div class="layout__images">
+                            <div class="swiper-inner js-slider-inner swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                               <div class="swiper-wrapper" id="swiper-wrapper-6c562259110b8683a" aria-live="polite" style="cursor: grab; transform: translate3d(0px, 0px, 0px);">
+                                  <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"> <img src="/assets/components/phpthumbof/cache/resort_fasad_summer.8876f09f77a8fc08342c9789adf489a9.jpg"> </div>
+                                  <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 10"> <img src="/assets/components/phpthumbof/cache/g1_resort_title04.8876f09f77a8fc08342c9789adf489a9.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="3 / 10"> <img src="/assets/components/phpthumbof/cache/resort_pool_1.8876f09f77a8fc08342c9789adf489a9.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="4 / 10"> <img src="/assets/components/phpthumbof/cache/g8_resort_the_grill.8876f09f77a8fc08342c9789adf489a9.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="5 / 10"> <img src="/assets/components/phpthumbof/cache/the_grill_steak.8876f09f77a8fc08342c9789adf489a9.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="6 / 10"> <img src="/assets/components/phpthumbof/cache/novotel_resort_room_pair_1.8876f09f77a8fc08342c9789adf489a9.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="7 / 10"> <img src="/assets/components/phpthumbof/cache/resort_pool_2.8876f09f77a8fc08342c9789adf489a9.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="8 / 10"> <img src="/assets/components/phpthumbof/cache/novotel_resort_grill.8876f09f77a8fc08342c9789adf489a9.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="9 / 10"> <img src="/assets/components/phpthumbof/cache/novotel_resort_grill_3.8876f09f77a8fc08342c9789adf489a9.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="10 / 10"> <img src="/assets/components/phpthumbof/cache/g8_resort_gym.8876f09f77a8fc08342c9789adf489a9.jpg"> </div>
+                               </div>
+                               <div class="swiper-pagination">
+                                  <div class="swiper-pagination__wrapper swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+                               </div>
+                               <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__body">
+                         <div class="hotelItem__body-title"> Новотель Резорт и спа Красная Поляна </div>
+                         <div class="hotelItem__body-description"> Самый романтичный отель курорта </div>
+                         <div class="hotelItem__body-icons">
+                            <div class="hotelItem__body-stars"> <i class="hotelItem__body-star hotelItem__body-star_5"></i> </div>
+                            <div class="hotelItem__body-grade"> 5 </div>
+                            <div class="hotelItem__body-reviews"> 1 отзывов </div>
+                         </div>
+                         <div class="hotelItem__body-tags">
+                            <div class="hotelItem__body-tag hotelItem__body-tag_"></div>
+                         </div>
+                         <div class="hotelItem__body-text"> Место, которое влюбляет в горы с первого взгляда. Окружённый со всех сторон панорамными горными пейзажами, Новотель Резорт и спа Красная Поляна высоко оценят активные путешественники. </div>
+                         <div class="hotelItem__body-details">
+                            <div class="hotelItem__body-details-icons"> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/wifi.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/SwimmingPool_16.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Dog_24.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Spa_16.svg)"></i> </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__footer">
+                         <a href="https://krasnayapolyanaresort.ru/novotel_resort_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="4"> Об отеле </a> 
+                         <a href="https://shop.krasnayapolyanaresort.ru/hotels/novotel_resort_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="4">
+                            <script> if (!window.priceDone) { document.write(priceButtonText(4)); } </script>Забронировать от 9940 ₽ 
+                         </a>
+                      </div>
+                   </div>
+                   <div class="hotelItem" data-id="50" data-accommodation="[Отели]" data-stars="[4 звезды]" data-place="[`Поляна 960]`" data-additional_benefits="[Открытый бассейн,Тренажерный зал,Сауна,Крытый бассейн,Вид на горы]" data-rating="5" data-reviews_count="2">
+                      <div class="hotelItem__header">
+                         <div class="layout__header-tags"> <span class="layout__header-label"> Поляна 960 </span> <span class="layout__header-label layout__header-label_card"></span> <span class="layout__header-label layout__header-label_recom">Рекомендуем</span> </div>
+                         <div class="layout__images">
+                            <div class="swiper-inner js-slider-inner swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                               <div class="swiper-wrapper" id="swiper-wrapper-a4f7fa1025df21007a" aria-live="polite" style="cursor: grab; transform: translate3d(0px, 0px, 0px);">
+                                  <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"> <img src="/assets/components/phpthumbof/cache/dolina_fasad_summer_3.b0fe7272418abca49aea79072147a01b.jpg"> </div>
+                                  <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 10"> <img src="/assets/components/phpthumbof/cache/g1_dolina_room01.b0fe7272418abca49aea79072147a01b.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="3 / 10"> <img src="/assets/components/phpthumbof/cache/g1_dolina_spa01.b0fe7272418abca49aea79072147a01b.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="4 / 10"> <img src="/assets/components/phpthumbof/cache/winter_infiniti_dolina.b0fe7272418abca49aea79072147a01b.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="5 / 10"> <img src="/assets/components/phpthumbof/cache/g1_dolina_meal_02.b0fe7272418abca49aea79072147a01b.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="6 / 10"> <img src="/assets/components/phpthumbof/cache/g1_dolina_meal_03.b0fe7272418abca49aea79072147a01b.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="7 / 10"> <img src="/assets/components/phpthumbof/cache/g1_dolina_meal.b0fe7272418abca49aea79072147a01b.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="8 / 10"> <img src="/assets/components/phpthumbof/cache/g1_dolina_meal_04.b0fe7272418abca49aea79072147a01b.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="9 / 10"> <img src="/assets/components/phpthumbof/cache/g8_dolina_liechtenshtein.b0fe7272418abca49aea79072147a01b.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="10 / 10"> <img src="/assets/components/phpthumbof/cache/dolina_brekfast_smitt_1.b0fe7272418abca49aea79072147a01b.jpg"> </div>
+                               </div>
+                               <div class="swiper-pagination">
+                                  <div class="swiper-pagination__wrapper swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+                               </div>
+                               <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__body">
+                         <div class="hotelItem__body-title"> Долина 960 </div>
+                         <div class="hotelItem__body-description"> Арт-отель для творческой молодежи </div>
+                         <div class="hotelItem__body-icons">
+                            <div class="hotelItem__body-stars"> <i class="hotelItem__body-star hotelItem__body-star_4"></i> </div>
+                            <div class="hotelItem__body-grade"> 5 </div>
+                            <div class="hotelItem__body-reviews"> 2 отзывов </div>
+                         </div>
+                         <div class="hotelItem__body-tags">
+                            <div class="hotelItem__body-tag hotelItem__body-tag_"></div>
+                         </div>
+                         <div class="hotelItem__body-text"> В art-пространстве бутик-отеля Долина 960 созданы идеальные условия как для отдыха, так и для креатива. Делиться фотографиями с отпуска особенно приятно, когда они сделаны на фоне бесконечной панорамы горных вершин, открывающейся из круглогодичного подогреваемого открытого инфинити-бассейна. </div>
+                         <div class="hotelItem__body-details">
+                            <div class="hotelItem__body-details-icons"> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Spa_16.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Dog_24.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/wifi.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/SwimmingPool_16.svg)"></i> </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__footer">
+                         <a href="https://krasnayapolyanaresort.ru/dolina_960/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="6"> Об отеле </a> 
+                         <a href="https://shop.krasnayapolyanaresort.ru/hotels/dolina_960/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="6">
+                            <script> if (!window.priceDone) { document.write(priceButtonText(6)); } </script>Забронировать от 6125 ₽ 
+                         </a>
+                      </div>
+                   </div>
+                   <div class="hotelItem" data-id="51" data-accommodation="[Отели]" data-stars="[4 звезды]" data-place="[`Поляна 960]`" data-additional_benefits="[Игровые пространства,Вид на горы]" data-rating="5" data-reviews_count="0">
+                      <div class="hotelItem__header">
+                         <div class="layout__header-tags"> <span class="layout__header-label"> Поляна 960 </span> <span class="layout__header-label layout__header-label_card"></span> <span class="layout__header-label layout__header-label_recom">Рекомендуем</span> </div>
+                         <div class="layout__images">
+                            <div class="swiper-inner js-slider-inner swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                               <div class="swiper-wrapper" id="swiper-wrapper-1fb63e026f7f59df" aria-live="polite" style="cursor: grab; transform: translate3d(0px, 0px, 0px);">
+                                  <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"> <img src="/assets/components/phpthumbof/cache/ibis_fasad_summer.d6760428580241a9a8b91a310c1caf6d.jpg"> </div>
+                                  <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 10"> <img src="/assets/components/phpthumbof/cache/g1_ibis_famili_001.d6760428580241a9a8b91a310c1caf6d.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="3 / 10"> <img src="/assets/components/phpthumbof/cache/ibis_2022_7.d6760428580241a9a8b91a310c1caf6d.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="4 / 10"> <img src="/assets/components/phpthumbof/cache/ibis_2022_1.d6760428580241a9a8b91a310c1caf6d.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="5 / 10"> <img src="/assets/components/phpthumbof/cache/ibis_fun_2022_2.d6760428580241a9a8b91a310c1caf6d.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="6 / 10"> <img src="/assets/components/phpthumbof/cache/ibis_fun_2022_3.d6760428580241a9a8b91a310c1caf6d.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="7 / 10"> <img src="/assets/components/phpthumbof/cache/g1_ibis_family_01.d6760428580241a9a8b91a310c1caf6d.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="8 / 10"> <img src="/assets/components/phpthumbof/cache/ibis_fun_2022_1.d6760428580241a9a8b91a310c1caf6d.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="9 / 10"> <img src="/assets/components/phpthumbof/cache/g1_ibis_family_02.d6760428580241a9a8b91a310c1caf6d.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="10 / 10"> <img src="/assets/components/phpthumbof/cache/ibis_2022_9.d6760428580241a9a8b91a310c1caf6d.jpg"> </div>
+                               </div>
+                               <div class="swiper-pagination">
+                                  <div class="swiper-pagination__wrapper swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+                               </div>
+                               <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__body">
+                         <div class="hotelItem__body-title"> Ибис Стайлс Красная Поляна </div>
+                         <div class="hotelItem__body-description"> Eco&amp;Fun отель </div>
+                         <div class="hotelItem__body-icons">
+                            <div class="hotelItem__body-stars"> <i class="hotelItem__body-star hotelItem__body-star_4"></i> </div>
+                            <div class="hotelItem__body-grade"> 5 </div>
+                            <div class="hotelItem__body-reviews"> 0 отзывов </div>
+                         </div>
+                         <div class="hotelItem__body-tags">
+                            <div class="hotelItem__body-tag hotelItem__body-tag_"></div>
+                         </div>
+                         <div class="hotelItem__body-text"> Ибис Стайлс Красная Поляна – для тех, кто ценит дизайн и экологичный образ мышления: ретро-футуристический интерьер, просторные номера с системой «умный дом», идеи «эко-френдли». Идеально подходит молодой творческой аудитории, ценителям стиля, живого общения, активного образа жизни и экологичного подхода. </div>
+                         <div class="hotelItem__body-details">
+                            <div class="hotelItem__body-details-icons"> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/wifi.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Dog_24.svg)"></i> </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__footer">
+                         <a href="https://krasnayapolyanaresort.ru/ibis_styles_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="7"> Об отеле </a> 
+                         <a href="https://shop.krasnayapolyanaresort.ru/hotels/ibis_styles_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="7">
+                            <script> if (!window.priceDone) { document.write(priceButtonText(7)); } </script>Забронировать от 5350 ₽ 
+                         </a>
+                      </div>
+                   </div>
+                   <div class="hotelItem" data-id="52" data-accommodation="[Отели]" data-stars="[4 звезды]" data-place="[`Поляна 960]`" data-additional_benefits="[Сауна,Тренажерный зал,Детская комната с воспитателем,Спа-центр,Крытый бассейн,Вид на горы]" data-rating="5" data-reviews_count="6">
+                      <div class="hotelItem__header">
+                         <div class="layout__header-tags"> <span class="layout__header-label"> Поляна 960 </span> <span class="layout__header-label layout__header-label_card"></span> <span class="layout__header-label layout__header-label_recom">Рекомендуем</span> </div>
+                         <div class="layout__images">
+                            <div class="swiper-inner js-slider-inner swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                               <div class="swiper-wrapper" id="swiper-wrapper-6015fad7faa1099b4" aria-live="polite" style="cursor: grab; transform: translate3d(0px, 0px, 0px);">
+                                  <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"> <img src="/assets/components/phpthumbof/cache/panorama_fasad_summer.03b505f657a866341e09c5e9f1ddbfc7.jpg"> </div>
+                                  <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 10"> <img src="/assets/components/phpthumbof/cache/g8_panorama_room.03b505f657a866341e09c5e9f1ddbfc7.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="3 / 10"> <img src="/assets/components/phpthumbof/cache/g8_panorama_pool.03b505f657a866341e09c5e9f1ddbfc7.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="4 / 10"> <img src="/assets/components/phpthumbof/cache/panorama_roma_3.03b505f657a866341e09c5e9f1ddbfc7.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="5 / 10"> <img src="/assets/components/phpthumbof/cache/lobby_panorama_cocktail_2.03b505f657a866341e09c5e9f1ddbfc7.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="6 / 10"> <img src="/assets/components/phpthumbof/cache/g8_panorama_kids_pool.03b505f657a866341e09c5e9f1ddbfc7.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="7 / 10"> <img src="/assets/components/phpthumbof/cache/g8_panorama_massage_room.03b505f657a866341e09c5e9f1ddbfc7.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="8 / 10"> <img src="/assets/components/phpthumbof/cache/g8_panorama_salt_room.03b505f657a866341e09c5e9f1ddbfc7.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="9 / 10"> <img src="/assets/components/phpthumbof/cache/g8_panorama_sauna.03b505f657a866341e09c5e9f1ddbfc7.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="10 / 10"> <img src="/assets/components/phpthumbof/cache/lobby_panorama_cocktail_1.03b505f657a866341e09c5e9f1ddbfc7.jpg"> </div>
+                               </div>
+                               <div class="swiper-pagination">
+                                  <div class="swiper-pagination__wrapper swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+                               </div>
+                               <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__body">
+                         <div class="hotelItem__body-title"> Панорама by Mercure Красная Поляна </div>
+                         <div class="hotelItem__body-description"> Семейный отель с maxi-сервисами для детей </div>
+                         <div class="hotelItem__body-icons">
+                            <div class="hotelItem__body-stars"> <i class="hotelItem__body-star hotelItem__body-star_4"></i> </div>
+                            <div class="hotelItem__body-grade"> 5 </div>
+                            <div class="hotelItem__body-reviews"> 6 отзывов </div>
+                         </div>
+                         <div class="hotelItem__body-tags">
+                            <div class="hotelItem__body-tag hotelItem__body-tag_"></div>
+                         </div>
+                         <div class="hotelItem__body-text"> Настоящая находка для семейного отдыха – отель Панорама by Mercure Красная Поляна. Он отвечает всем требованиям взыскательных родителей: детское меню, служба нянь, плавательный бассейн с зоной для детей, тихая атмосфера с видом на горы. Для гостей доступны спа-центр и ресторан итальянской кухни Roma. </div>
+                         <div class="hotelItem__body-details">
+                            <div class="hotelItem__body-details-icons"> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/wifi.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/SwimmingPool_16.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Dog_24.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Spa_16.svg)"></i> </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__footer">
+                         <a href="https://krasnayapolyanaresort.ru/panorama_by_mercure_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="8"> Об отеле </a> 
+                         <a href="https://shop.krasnayapolyanaresort.ru/hotels/panorama_by_mercure_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="8">
+                            <script> if (!window.priceDone) { document.write(priceButtonText(8)); } </script>Забронировать от 7210 ₽ 
+                         </a>
+                      </div>
+                   </div>
+                   <div class="hotelItem" data-id="53" data-accommodation="[Отели]" data-stars="[4 звезды]" data-place="[`Поляна 960]`" data-additional_benefits="[Тренажерный зал,Вид на горы]" data-rating="5" data-reviews_count="1">
+                      <div class="hotelItem__header">
+                         <div class="layout__header-tags"> <span class="layout__header-label"> Поляна 960 </span> <span class="layout__header-label layout__header-label_card"></span> <span class="layout__header-label layout__header-label_recom">Рекомендуем</span> </div>
+                         <div class="layout__images">
+                            <div class="swiper-inner js-slider-inner swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                               <div class="swiper-wrapper" id="swiper-wrapper-7a46d4a15dd96be8" aria-live="polite" style="cursor: grab; transform: translate3d(0px, 0px, 0px);">
+                                  <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"> <img src="/assets/components/phpthumbof/cache/novotel_4_fasad_summer.9f878b15891f7ff8ea1e8cc32fd24706.jpg"> </div>
+                                  <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 10"> <img src="/assets/components/phpthumbof/cache/novotel_room_service_2.9f878b15891f7ff8ea1e8cc32fd24706.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="3 / 10"> <img src="/assets/components/phpthumbof/cache/novotel_room_service_1.9f878b15891f7ff8ea1e8cc32fd24706.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="4 / 10"> <img src="/assets/components/phpthumbof/cache/novotel_congress_belveder_3.9f878b15891f7ff8ea1e8cc32fd24706.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="5 / 10"> <img src="/assets/components/phpthumbof/cache/novotel_2022_11.9f878b15891f7ff8ea1e8cc32fd24706.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="6 / 10"> <img src="/assets/components/phpthumbof/cache/g8_congress_lobby_03.9f878b15891f7ff8ea1e8cc32fd24706.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="7 / 10"> <img src="/assets/components/phpthumbof/cache/novotel_childrens_2022_2.9f878b15891f7ff8ea1e8cc32fd24706.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="8 / 10"> <img src="/assets/components/phpthumbof/cache/novotel_congress_gym_1.9f878b15891f7ff8ea1e8cc32fd24706.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="9 / 10"> <img src="/assets/components/phpthumbof/cache/novotel_breakfast_2022.9f878b15891f7ff8ea1e8cc32fd24706.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="10 / 10"> <img src="/assets/components/phpthumbof/cache/novotel_2022_10.9f878b15891f7ff8ea1e8cc32fd24706.jpg"> </div>
+                               </div>
+                               <div class="swiper-pagination">
+                                  <div class="swiper-pagination__wrapper swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+                               </div>
+                               <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__body">
+                         <div class="hotelItem__body-title"> Новотель Красная Поляна </div>
+                         <div class="hotelItem__body-description"> Комфортный отдых в горах </div>
+                         <div class="hotelItem__body-icons">
+                            <div class="hotelItem__body-stars"> <i class="hotelItem__body-star hotelItem__body-star_4"></i> </div>
+                            <div class="hotelItem__body-grade"> 5 </div>
+                            <div class="hotelItem__body-reviews"> 1 отзывов </div>
+                         </div>
+                         <div class="hotelItem__body-tags">
+                            <div class="hotelItem__body-tag hotelItem__body-tag_"></div>
+                         </div>
+                         <div class="hotelItem__body-text"> Путешествовать с максимальным комфортом легко, если вы проживаете в Новотель Красная Поляна. Найдите время, чтобы провести его в горах вместе с семьёй, отвлечься от шума большого города в кругу друзей и расслабиться в уютной обстановке. Отель расположен на Поляне 960 в двух минутах ходьбы от канатных дорог и популярных эко-троп курорта, что особенно оценят любители природы и активного досуга. </div>
+                         <div class="hotelItem__body-details">
+                            <div class="hotelItem__body-details-icons"> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/wifi.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Dog_24.svg)"></i> </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__footer">
+                         <a href="https://krasnayapolyanaresort.ru/novotel_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="3"> Об отеле </a> 
+                         <a href="https://shop.krasnayapolyanaresort.ru/hotels/novotel_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="3">
+                            <script> if (!window.priceDone) { document.write(priceButtonText(3)); } </script>Забронировать от 5700 ₽ 
+                         </a>
+                      </div>
+                   </div>
+                   <div class="hotelItem" data-id="256" data-accommodation="[Отели]" data-stars="[4 звезды]" data-place="[`Поляна 540]`" data-additional_benefits="[Тренажерный зал,Сауна,Вид на горы]" data-rating="5" data-reviews_count="0">
+                      <div class="hotelItem__header">
+                         <div class="layout__header-tags"> <span class="layout__header-label"> Поляна 540 </span> <span class="layout__header-label layout__header-label_card"></span> <span class="layout__header-label layout__header-label_recom">Рекомендуем</span> </div>
+                         <div class="layout__images">
+                            <div class="swiper-inner js-slider-inner swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                               <div class="swiper-wrapper" id="swiper-wrapper-95ddf91ec0fe1182" aria-live="polite" style="cursor: grab; transform: translate3d(0px, 0px, 0px);">
+                                  <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"> <img src="/assets/components/phpthumbof/cache/cort_fasad_summer.fb89830a5c11bb00b36742fad2ec3b16.jpg"> </div>
+                                  <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 10"> <img src="/assets/components/phpthumbof/cache/kanatka.fb89830a5c11bb00b36742fad2ec3b16.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="3 / 10"> <img src="/assets/components/phpthumbof/cache/courtyard_2.fb89830a5c11bb00b36742fad2ec3b16.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="4 / 10"> <img src="/assets/components/phpthumbof/cache/courtyard_workation_1.fb89830a5c11bb00b36742fad2ec3b16.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="5 / 10"> <img src="/assets/components/phpthumbof/cache/courtyard_10.fb89830a5c11bb00b36742fad2ec3b16.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="6 / 10"> <img src="/assets/components/phpthumbof/cache/courtyard_4.fb89830a5c11bb00b36742fad2ec3b16.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="7 / 10"> <img src="/assets/components/phpthumbof/cache/courtyard_sauna_2.fb89830a5c11bb00b36742fad2ec3b16.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="8 / 10"> <img src="/assets/components/phpthumbof/cache/green_grill_food_5.fb89830a5c11bb00b36742fad2ec3b16.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="9 / 10"> <img src="/assets/components/phpthumbof/cache/green_grill_food_4.fb89830a5c11bb00b36742fad2ec3b16.jpg"> </div>
+                                  <div class="swiper-slide" role="group" aria-label="10 / 10"> <img src="/assets/components/phpthumbof/cache/green_grill_food_2.fb89830a5c11bb00b36742fad2ec3b16.jpg"> </div>
+                               </div>
+                               <div class="swiper-pagination">
+                                  <div class="swiper-pagination__wrapper swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+                               </div>
+                               <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__body">
+                         <div class="hotelItem__body-title"> Кортъярд Марриотт Сочи Красная Поляна </div>
+                         <div class="hotelItem__body-description"> Демократичный отель в самом центре курорта </div>
+                         <div class="hotelItem__body-icons">
+                            <div class="hotelItem__body-stars"> <i class="hotelItem__body-star hotelItem__body-star_4"></i> </div>
+                            <div class="hotelItem__body-grade"> 5 </div>
+                            <div class="hotelItem__body-reviews"> 0 отзывов </div>
+                         </div>
+                         <div class="hotelItem__body-tags">
+                            <div class="hotelItem__body-tag hotelItem__body-tag_"></div>
+                         </div>
+                         <div class="hotelItem__body-text"> Демократичный отель всемирно известного бренда Marriott, расположенный в самом центре курорта. Создан для активных туристов, которые выбирают отдых в центре динамичной Поляны 540. Концепция Pets Friendly позволяет принимать гостей с питомцами. </div>
+                         <div class="hotelItem__body-details">
+                            <div class="hotelItem__body-details-icons"> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/wifi.svg)"></i> <i class="hotelItem__body-details-icon" style="background-image:url(upload/icons/Dog_24.svg)"></i> </div>
+                         </div>
+                      </div>
+                      <div class="hotelItem__footer">
+                         <a href="https://krasnayapolyanaresort.ru/courtyard_by_marriott_sochi_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="8"> Об отеле </a> 
+                         <a href="https://shop.krasnayapolyanaresort.ru/hotels/courtyard_by_marriott_sochi_krasnaya_polyana/?dev=1&amp;adults=1&amp;date=2023-06-28&amp;date_out=2023-06-29" class="hotelItem__footer-btn" data-hotel-id="8">
+                            <script> if (!window.priceDone) { document.write(priceButtonText(8)); } </script>Забронировать от 7210 ₽ 
+                         </a>
+                      </div>
+                   </div>
+                   <script> window.priceDone = true; </script> 
+                </div>
+             </div>
+          </div>
+       </section>
         <br>
         <br>
         <br>

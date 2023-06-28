@@ -8,8 +8,9 @@ import { useWindowSize } from "../hooks";
 const KPDatePicker = ({close, classMarker, setDates, startDate, endDate, maxDate})=>{ 
   const size = useWindowSize();
   const detectOrientation = () =>{
-    if (size.width < 881) return true;
-      return false;
+    if (size.width > 1160) return true;
+    else if (size.width < 881) return true;
+    else return false;
   }
   const datePickerRef = useRef(null)
   const missClickHandle = (e) =>{
@@ -49,7 +50,7 @@ const KPDatePicker = ({close, classMarker, setDates, startDate, endDate, maxDate
         {detectOrientation() ?
         <DatePicker
             onClickOutside={missClickHandle}
-            // onMonthChange={markLastMounthDayInRange}
+            onMonthChange={markLastMounthDayInRange}
             onDayMouseEnter={markLastMounthDayInRange}
             renderDayContents={renderDayContents}
             renderCustomHeader={({
@@ -80,7 +81,10 @@ const KPDatePicker = ({close, classMarker, setDates, startDate, endDate, maxDate
         // includeDates={availableDates}
         selectsDisabledDaysInRange
         selectsRange
-        onChange={(dates) => onChange(dates)}
+        onChange={(dates) => {
+            onChange(dates)
+            setTimeout(()=>markLastMounthDayInRange())
+        }}
         maxDate={maxDate}
         startDate={startDate}
         endDate={endDate}

@@ -22,20 +22,6 @@ function App() {
   const closeGuestsPanel = () => setIsGuestsPanelOpen(false);
   const openGuestsPanel = () => setIsGuestsPanelOpen(true);
 
-  const months = [
-    "января",
-    "февраля",
-    "марта",
-    "апреля",
-    "мая",
-    "июня",
-    "июля",
-    "августа",
-    "сентября",
-    "октября",
-    "ноября",
-    "декабря",
-  ];
   const [firstDate, setFirstDate] = useState(new Date());
   const [secondDate, setSecondDate] = useState(
     new Date(
@@ -89,72 +75,61 @@ function App() {
   const href = baseUrl + `hotels/?date=${firstDateHref}&date_out=${secondDateHref}${nightsHref}${adultsHref}${childrenHref}`;
 
   return (
-    <form
-        method="GET"
-        action="/hotels/"
-        test="index"
-        className="js-booking-form searchHotel"
-    >
-      <div className="searchHotel__header">
-        <div className="searchHotel__header-icon"></div>
-        <div className="searchHotel__header-details">
-          <div className="searchHotel__header-title">Подберите отель</div>
-          <div className="searchHotel__header-description">
-            Бронируйте номер по выгодной цене
-          </div>
-        </div>
-      </div>
-      <div className="searchHotel__body relative">
-        <div className="searchHotel__wrapper relative">
-          <div className="searchHotel__body-item kp-calendar-marker" onClick={openCalendar}>
-              <span className="searchHotel__body-label kp-calendar-marker">Прибытие</span>
-              <div
-                  className="searchHotel__body-input kp-calendar-marker"
-              >{firstDateStr}</div>
-          </div>
-          <div className="searchHotel__body-item kp-calendar-marker" onClick={openCalendar}>
-            <span className="searchHotel__body-label kp-calendar-marker">Выезд</span>
-            <div
-              className="searchHotel__body-input kp-calendar-marker"
-            >{secondDateStr}</div>
-          </div>
-          <div className="searchHotel__body-item kp-guests-panel-marker" onClick={openGuestsPanel}>
-            <div className="booking-form-section booking-form-section_guests kp-guests-panel-marker">
-              <div className="booking-form-section__container kp-guests-panel-marker">
-                <div className="booking-form-section__title kp-guests-panel-marker">Гости</div>
-                <div className="booking-form-section__value kp-guests-panel-marker">
-                  <div className="booking-form-section__value kp-guests-panel-marker">{guestsString}</div>
-                </div>
-              </div>
+    <form method="GET" action="/hotels/" test="hotels" class="js-booking-form searchHotel">
+
+        <div class="searchHotel__header">
+            <div class="searchHotel__header-icon"></div>
+            <div class="searchHotel__header-details">
+                <div class="searchHotel__header-title">Подберите отель</div>
+                <div class="searchHotel__header-description">Бронируйте номер по выгодной цене</div>
             </div>
-          </div>
-          {isCalendarOpen && <KPDatePicker 
-              isOpen={isCalendarOpen}
-              close={closeCalendar}
-              setDates={setDates}
-              startDate={firstDate}
-              endDate={secondDate}
-              maxDate={maxDate}
-              // маркер нужен для предотвращения конфликта при открытии календаря:
-              // без него при нажатии на кнопку календарь сначала закрывается, а потом сразу открывается,
-              // так как он должен закрываться при нажатии мимо и открываться при нажатии на кнопку, при этом кнопка = мимо
-              classMarker = {'kp-calendar-marker'}
-          />}
-          {isGuestsPanelOpen && <Guests 
-                closeFunction={closeGuestsPanel}
-                classMarker = {'kp-guests-panel-marker'}
-                childrenAges={children}
-                setAdultsCount={setAdultsCount}
-                setChildrenAges={setChildren}
-            />}
         </div>
-        <a className="searchHotel__body-btn" href={href} type="submit">
-          Подобрать
-        </a>
-      </div>
+        {/* <div className="relative flex searchHotel__wrapper" style={{flexWrap: 'wrap'}}> */}
+            <div class="searchHotel__body">
+                <div class="searchHotel__body-item pointer kp-calendar-marker" onClick={openCalendar}>
+                    <span class="searchHotel__body-label kp-calendar-marker">Прибытие</span> 
+                    <p class="searchHotel__body-input kp-calendar-marker">{firstDateStr}</p>
+                    {isCalendarOpen && <KPDatePicker 
+                        isOpen={isCalendarOpen}
+                        close={closeCalendar}
+                        setDates={setDates}
+                        startDate={firstDate}
+                        endDate={secondDate}
+                        maxDate={maxDate}
+                        // маркер нужен для предотвращения конфликта при открытии календаря:
+                        // без него при нажатии на кнопку календарь сначала закрывается, а потом сразу открывается,
+                        // так как он должен закрываться при нажатии мимо и открываться при нажатии на кнопку, при этом кнопка = мимо
+                        classMarker = {'kp-calendar-marker'}
+                    />}
+                </div>
+                <div class="searchHotel__body-item pointer kp-calendar-marker" onClick={openCalendar}>
+                    <span class="searchHotel__body-label kp-calendar-marker">Выезд</span> 
+                    <p class="searchHotel__body-input kp-calendar-marker">{secondDateStr}</p>
+                </div>
+                <div class="searchHotel__body-item pointer" onClick={openGuestsPanel}>
+                    <div class="booking-form-section booking-form-section_guests">
+                        <div class="booking-form-section__container">
+                            <div class="booking-form-section__title">Гости</div>
+                            <div class="booking-form-section__value"> 
+                                <p class="searchHotel__body-text">{guestsString}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {isGuestsPanelOpen && <Guests 
+                        closeFunction={closeGuestsPanel}
+                        classMarker = {'kp-guests-panel-marker'}
+                        childrenAges={children}
+                        setAdultsCount={setAdultsCount}
+                        setChildrenAges={setChildren}
+                    />}
+                </div>
+            </div>
+        {/* </div> */}
+        <a class="searchHotel__body-btn" href={href}> Подобрать </a> 
     </form>
   );
 }
+
 
 const Guests = ({
   closeFunction,

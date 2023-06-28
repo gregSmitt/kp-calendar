@@ -5,7 +5,7 @@
     top: 62px;
     left: 0;
     z-index: 100;
-    width: 100%;
+    width: calc(200% + 12px);
     display: flex;
     justify-content: center;
     &>div{
@@ -15,7 +15,14 @@
       width: initial;
       display: block;
       &>div{
-        width: initial;
+        width: 100%;
+      }
+    }
+    @media (min-width: 1161px) {
+      width: calc(200% + 12px);
+      display: block;
+      &>div{
+        width: 100%;
       }
     }
 }
@@ -26,7 +33,7 @@
     /* border-radius: 0.3em; */
     display: inline-block;
     position: relative;
-    border-radius: 16px;
+    border-radius: 8px;
     box-shadow: 0px 4px 50px rgba(31, 31, 31, 0.16);
     display: flex;
     justify-content: center;
@@ -154,6 +161,9 @@
   @media (min-width: 881px) {
     width: 42px;
     height: 40px;
+  }
+  @media (min-width: 1441px) {
+    width: 39.6px
   }
   }
   .react-datepicker__day-name{
@@ -488,10 +498,34 @@
         @media (min-width: 599px) {
           left: -20px;
         }
+        @media (min-width: 1161px) {
+          left: -32px;
+        }
+        @media (min-width: 1273px) {
+          left: -20px;
+        }
+        @media (min-width: 1441px) {
+          left: -32px;
+        }
+        @media (min-width: 1601px) {
+          left: -20px;
+        }
     }
     &.kp-datepicker__navigation--next{
       right: -32px;
         @media (min-width: 599px) {
+          right: -20px;
+        }
+        @media (min-width: 1161px) {
+          right: -32px;
+        }
+        @media (min-width: 1273px) {
+          right: -20px;
+        }
+        @media (min-width: 1441px) {
+          right: -32px;
+        }
+        @media (min-width: 1601px) {
           right: -20px;
         }
     }
