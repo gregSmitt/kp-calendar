@@ -1,5 +1,3 @@
-import logo from "assets/images/Logo.svg";
-import ButtonSelect from "Components/ButtonSelect";
 import { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./App.scss";
@@ -21,9 +19,6 @@ function App() {
   const [isGuestsPanelOpen, setIsGuestsPanelOpen] = useState(false);
   const closeCalendar = () => setIsCalendarOpen(false);
   const openCalendar = () => setIsCalendarOpen(true);
-  const toggleCalendar = () => {
-    setIsCalendarOpen(!isCalendarOpen);
-  };
   const closeGuestsPanel = () => setIsGuestsPanelOpen(false);
   const openGuestsPanel = () => setIsGuestsPanelOpen(true);
 
@@ -221,107 +216,3 @@ const Guests = ({
 };
 
 export default App;
-
-            {/* <div className="booking-form-section__dropdown">
-              <div className="booking-form-section__dropdown-head">
-                <div className="booking-form-section__dropdown-title">Гости</div>
-                <div className="booking-form-section__dropdown-close">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M18.3 5.70999C18.1131 5.52273 17.8595 5.4175 17.595 5.4175C17.3305 5.4175 17.0768 5.52273 16.89 5.70999L12 10.59L7.10997 5.69999C6.92314 5.51273 6.66949 5.4075 6.40497 5.4075C6.14045 5.4075 5.8868 5.51273 5.69997 5.69999C5.30997 6.08999 5.30997 6.71999 5.69997 7.10999L10.59 12L5.69997 16.89C5.30997 17.28 5.30997 17.91 5.69997 18.3C6.08997 18.69 6.71997 18.69 7.10997 18.3L12 13.41L16.89 18.3C17.28 18.69 17.91 18.69 18.3 18.3C18.69 17.91 18.69 17.28 18.3 16.89L13.41 12L18.3 7.10999C18.68 6.72999 18.68 6.08999 18.3 5.70999Z"
-                      fill="#01BAC6"
-                    ></path>
-                  </svg>
-                </div>
-              </div>
-              <div className="booking-form-section__dropdown-footer">
-                {" "}
-                <button className="booking-form-section__dropdown-submit btn btn_size_s btn_color_red">
-                  {" "}
-                  Применить{" "}
-                </button>{" "}
-              </div>
-              <div className="booking-form__guests-container">
-                <div className="booking-form__guests-section booking-form__guests-section_adults">
-                  <div className="booking-form__guests-section-title">Взрослые</div>
-                  <div className="booking-form__guests-section-content">
-                    <div className="counter">
-                      <div className="counter__control js-booking-minus counter__control_minus"></div>
-                      <div className="counter__info">
-                        <input
-                          type="number"
-                          className="js-booking-counter counter__value"
-                          value="2"
-                          min="1"
-                          max="10"
-                        ></input>
-                      </div>
-                      <div className="counter__control js-booking-plus counter__control_plus"></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="booking-form__guests-section booking-form__guests-section_childs">
-                  <div className="booking-form__guests-section-title">Дети</div>
-                  <div className="booking-form__guests-section-content js-booking-select-group">
-                    <div className="booking-form__guests-select active">
-                      <select className="searchHotel__body-select js-booking-select">
-                        <option disabled="" selected="" value="">
-                          Добавить ребенка
-                        </option>
-                        <option value="0">до 1 года</option>
-                        <option value="1">1 год</option>
-                        <option value="2">2 года</option>
-                        <option value="3">3 года</option>
-                        <option value="4">4 года</option>
-                        <option value="5">5 лет</option>
-                        <option value="6">6 лет</option>
-                        <option value="7">7 лет</option>
-                        <option value="8">8 лет</option>
-                        <option value="9">9 лет</option>
-                        <option value="10">10 лет</option>
-                        <option value="11">11 лет</option>
-                        <option value="12">12 лет</option>
-                        <option value="13">13 лет</option>
-                        <option value="14">14 лет</option>
-                        <option value="15">15 лет</option>
-                        <option value="16">16 лет</option>
-                        <option value="17">17 лет</option>
-                      </select>
-                      <div className="booking-form__guests-select-delete"></div>
-                    </div>
-                    <div className="booking-form__guests-select">
-                      <select className="searchHotel__body-select js-booking-select">
-                        <option disabled="" selected="" value="">
-                          Добавить ребенка
-                        </option>
-                        <option value="0">до 1 года</option>
-                        <option value="1">1 год</option>
-                        <option value="2">2 года</option>
-                        <option value="3">3 года</option>
-                        <option value="4">4 года</option>
-                        <option value="5">5 лет</option>
-                        <option value="6">6 лет</option>
-                        <option value="7">7 лет</option>
-                        <option value="8">8 лет</option>
-                        <option value="9">9 лет</option>
-                        <option value="10">10 лет</option>
-                        <option value="11">11 лет</option>
-                        <option value="12">12 лет</option>
-                        <option value="13">13 лет</option>
-                        <option value="14">14 лет</option>
-                        <option value="15">15 лет</option>
-                        <option value="16">16 лет</option>
-                        <option value="17">17 лет</option>
-                      </select>
-                      <div className="booking-form__guests-select-delete"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
