@@ -8,6 +8,7 @@ import Counter from "Components/Counter";
 import useOnClickOutside from "Components/hooks";
 import { useRef } from "react";
 import { declOfNum } from "helpers";
+import { useEffect } from "react";
 registerLocale("ru", ru);
 /*global maxDate*/
 /*global baseUrl*/
@@ -30,6 +31,24 @@ function App() {
       new Date().getDate() + 1
     )
   );
+  useEffect(()=>{
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+    if (params.adults) {
+        setAdultsCount(params.adults)
+    } 
+    if (params['children-age']) {
+        setChildren(params['children-age'].split(';'))
+    } 
+    if (params.date) {
+        const dateInArr = params.date.split('-')
+        setFirstDate(new Date(dateInArr[0], dateInArr[1]-1, dateInArr[2]))
+    }
+    if (params.date_out) {
+        const dateOutArr = params.date_out.split('-')
+        setSecondDate(new Date(dateOutArr[0], dateOutArr[1]-1, dateOutArr[2]))
+    }
+  }, [])
   const setDates = (firstDate, secondDate = null) => {
     setFirstDate(firstDate);
     setSecondDate(secondDate);
@@ -75,20 +94,19 @@ function App() {
   const href = baseUrl + `hotels/?date=${firstDateHref}&date_out=${secondDateHref}${nightsHref}${adultsHref}${childrenHref}`;
 
   return (
-    <form method="GET" action="/hotels/" test="hotels" class="js-booking-form searchHotel">
-
-        <div class="searchHotel__header">
-            <div class="searchHotel__header-icon"></div>
-            <div class="searchHotel__header-details">
-                <div class="searchHotel__header-title">Подберите отель</div>
-                <div class="searchHotel__header-description">Бронируйте номер по выгодной цене</div>
+    <form method="GET" action="/hotels/" test="hotels" className="js-booking-form searchHotel">
+        <div className="searchHotel__header">
+            <div className="searchHotel__header-icon"></div>
+            <div className="searchHotel__header-details">
+                <div className="searchHotel__header-title">Подберите отель</div>
+                <div className="searchHotel__header-description">Бронируйте номер по выгодной цене</div>
             </div>
         </div>
         {/* <div className="relative flex searchHotel__wrapper" style={{flexWrap: 'wrap'}}> */}
-            <div class="searchHotel__body">
-                <div class="searchHotel__body-item pointer kp-calendar-marker" onClick={openCalendar}>
-                    <span class="searchHotel__body-label kp-calendar-marker">Прибытие</span> 
-                    <p class="searchHotel__body-input kp-calendar-marker">{firstDateStr}</p>
+            <div className="searchHotel__body">
+                <div className="searchHotel__body-item kp-calendar-marker" onClick={openCalendar}>
+                    <span className="searchHotel__body-label kp-calendar-marker pointer">Прибытие</span> 
+                    <p className="searchHotel__body-input pointer kp-calendar-marker">{firstDateStr}</p>
                     {isCalendarOpen && <KPDatePicker 
                         isOpen={isCalendarOpen}
                         close={closeCalendar}
@@ -102,16 +120,16 @@ function App() {
                         classMarker = {'kp-calendar-marker'}
                     />}
                 </div>
-                <div class="searchHotel__body-item pointer kp-calendar-marker" onClick={openCalendar}>
-                    <span class="searchHotel__body-label kp-calendar-marker">Выезд</span> 
-                    <p class="searchHotel__body-input kp-calendar-marker">{secondDateStr}</p>
+                <div className="searchHotel__body-item kp-calendar-marker" onClick={openCalendar}>
+                    <span className="searchHotel__body-label kp-calendar-marker pointer">Выезд</span> 
+                    <p className="searchHotel__body-input kp-calendar-marker pointer">{secondDateStr}</p>
                 </div>
-                <div class="searchHotel__body-item pointer" onClick={openGuestsPanel}>
-                    <div class="booking-form-section booking-form-section_guests">
-                        <div class="booking-form-section__container">
-                            <div class="booking-form-section__title">Гости</div>
-                            <div class="booking-form-section__value"> 
-                                <p class="searchHotel__body-text">{guestsString}</p>
+                <div className="searchHotel__body-item" onClick={openGuestsPanel}>
+                    <div className="booking-form-section booking-form-section_guests">
+                        <div className="booking-form-section__container pointer">
+                            <div className="booking-form-section__title pointer">Гости</div>
+                            <div className="booking-form-section__value"> 
+                                <p className="searchHotel__body-text">{guestsString}</p>
                             </div>
                         </div>
                     </div>
@@ -125,7 +143,7 @@ function App() {
                 </div>
             </div>
         {/* </div> */}
-        <a class="searchHotel__body-btn" href={href}> Подобрать </a> 
+        <button className="searchHotel__body-btn" type="button" onClick={()=>{window.location.replace(href)}}> Подобрать </button> 
     </form>
   );
 }
@@ -178,7 +196,7 @@ const Guests = ({
 
   return (
     <div className="kp-select-hotel__guests" ref={panelRef}>
-      <Counter title={"Взрослые"} minCount={1} onChange={changeAdultsCount} />
+      <Counter title={"Взрослые"} minCount={1} onChange={changeAdultsCount} defaultValue={2} />
       <Counter
         title={"Дети"}
         desc={"До 17 лет"}
