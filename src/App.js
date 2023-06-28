@@ -106,19 +106,19 @@ function App() {
       </div>
       <div className="searchHotel__body relative">
         <div className="searchHotel__wrapper relative">
-          <div className="searchHotel__body-item kp-calendar-marker" onClick={openCalendar}>
+          <div className="searchHotel__body-item pointer kp-calendar-marker" onClick={openCalendar}>
               <span className="searchHotel__body-label kp-calendar-marker">Прибытие</span>
               <div
                   className="searchHotel__body-input kp-calendar-marker"
               >{firstDateStr}</div>
           </div>
-          <div className="searchHotel__body-item kp-calendar-marker" onClick={openCalendar}>
+          <div className="searchHotel__body-item pointer kp-calendar-marker" onClick={openCalendar}>
             <span className="searchHotel__body-label kp-calendar-marker">Выезд</span>
             <div
               className="searchHotel__body-input kp-calendar-marker"
             >{secondDateStr}</div>
           </div>
-          <div className="searchHotel__body-item kp-guests-panel-marker" onClick={openGuestsPanel}>
+          <div className="searchHotel__body-item pointer kp-guests-panel-marker" onClick={openGuestsPanel}>
             <div className="booking-form-section booking-form-section_guests kp-guests-panel-marker">
               <div className="booking-form-section__container kp-guests-panel-marker">
                 <div className="booking-form-section__title kp-guests-panel-marker">Гости</div>
@@ -203,7 +203,12 @@ const Guests = ({
 
   return (
     <div className="kp-select-hotel__guests" ref={panelRef}>
-      <Counter title={"Взрослые"} minCount={1} onChange={changeAdultsCount} />
+      <Counter
+            title={"Взрослые"}
+            minCount={1} 
+            onChange={changeAdultsCount}
+            defaultCount={2}
+         />
       <Counter
         title={"Дети"}
         desc={"До 17 лет"}

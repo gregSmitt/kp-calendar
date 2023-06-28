@@ -5,8 +5,8 @@ import { ReactComponent as IncreaseIconDisabled } from 'assets/images/Icon_incre
 import { ReactComponent as IncreaseIcon } from 'assets/images/Icon_increase.svg';
 import { useState } from 'react';
 
-const Counter = ({title, desc, onChange, minCount=0, onIncrease, onDecrease, maxCount=Infinity})=>{
-    const [counter, setCounter] = useState(minCount)
+const Counter = ({title, desc, onChange, minCount=0, defaultCount=0, onIncrease, onDecrease, maxCount=Infinity})=>{
+    const [counter, setCounter] = useState(defaultCount)
     const changeHandler = (counter) =>{
         if(onChange) onChange(counter)
     }
