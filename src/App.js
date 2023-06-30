@@ -3,7 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./App.scss";
 import ru from "date-fns/locale/ru";
 import KPDatePicker from "Components/KPDatePicker";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Counter from "Components/Counter";
 import useOnClickOutside from "Components/hooks";
 import { useRef } from "react";
@@ -22,20 +22,6 @@ function App() {
   const closeGuestsPanel = () => setIsGuestsPanelOpen(false);
   const openGuestsPanel = () => setIsGuestsPanelOpen(true);
 
-  const months = [
-    "января",
-    "февраля",
-    "марта",
-    "апреля",
-    "мая",
-    "июня",
-    "июля",
-    "августа",
-    "сентября",
-    "октября",
-    "ноября",
-    "декабря",
-  ];
   const [firstDate, setFirstDate] = useState(new Date());
   const [secondDate, setSecondDate] = useState(
     new Date(
@@ -44,6 +30,29 @@ function App() {
       new Date().getDate() + 1
     )
   );
+  useEffect(()=>{
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+    if (params.adults) {
+        setAdultsCount(params.adults)
+    } 
+    if (params['children-age']) {
+        setChildren(params['children-age'].split(';'))
+    } 
+    if (params.date) {
+        const dateInArr = params.date.split('-')
+        setFirstDate(new Date(dateInArr[0], dateInArr[1]-1, dateInArr[2]))
+    }
+    if (params.date_out) {
+        const dateOutArr = params.date_out.split('-')
+        setSecondDate(new Date(dateOutArr[0], dateOutArr[1]-1, dateOutArr[2]))
+    }
+  }, []);
+  useEffect(()=>{
+    if (secondDate) {
+      closeCalendar()
+    }
+  }, [secondDate])
   const setDates = (firstDate, secondDate = null) => {
     setFirstDate(firstDate);
     setSecondDate(secondDate);
