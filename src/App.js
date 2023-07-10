@@ -8,6 +8,7 @@ import Counter from "Components/Counter";
 import useOnClickOutside from "Components/hooks";
 import { useRef } from "react";
 import { declOfNum } from "helpers";
+import Select from "Components/select";
 registerLocale("ru", ru);
 /*global maxDate*/
 /*global baseUrl*/
@@ -81,13 +82,13 @@ function App() {
 
   const firstDateHref = firstDate
     ? `${firstDate.getFullYear()}-${
-        firstDate.getMonth() + 1
-      }-${firstDate.getDate()}`
+        addZeroToDate(firstDate.getMonth() + 1)
+      }-${addZeroToDate(firstDate.getDate())}`
     : "";
   const secondDateHref = secondDate
     ? `${secondDate.getFullYear()}-${
-        secondDate.getMonth() + 1
-      }-${secondDate.getDate()}`
+        addZeroToDate(secondDate.getMonth() + 1)
+      }-${addZeroToDate(secondDate.getDate())}`
     : "";
   const childrenHref = children.length
     ? `&children-age=${children.join(";")}`
@@ -191,6 +192,18 @@ const Guests = ({
   const changeAdultsCount = (count) => {
     setAdultsCount(count);
   };
+  
+  let ageOptions = [
+    { value: 0, label: "до 1 года" },
+    { value: 1, label: "1 год" },
+    { value: 2, label: "2 года" },
+    { value: 3, label: "3 года" },
+    { value: 4, label: "4 года" },
+  ];
+  
+  for (var i = 5; i <= 17; i++) {
+      ageOptions.push({ value: i, label: i + " лет" });
+  }
 
   const childrenCounters = Array.from(Array(childrenAges.length).keys()).map(
     (num) => {
@@ -218,15 +231,24 @@ const Guests = ({
             onChange={changeAdultsCount}
             defaultCount={2}
          />
-      <Counter
-        title={"Дети"}
-        desc={"До 17 лет"}
-        onIncrease={increaseChildrenCount}
-        onDecrease={decreaseChildrenCount}
+      <Select
+        childCount={childrenAges}
+        ageOptions={ageOptions}
+        onChildChange={(id, val) => {
+          const newAges = [...childrenAges];
+          newAges[id] = val.value;
+          setChildrenAges(newAges);
+        }}
+        onChildRemove={(idx) => {
+          console.log(idx)
+          const arr = [...childrenAges];
+          arr.splice(idx, 1);
+          setChildrenAges(arr);
+        }}
       />
-      {childrenCounters.length ? childrenCounters : null}
     </div>
   );
 };
+
 
 export default App;
