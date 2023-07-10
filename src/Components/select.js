@@ -45,7 +45,6 @@ const colorStyles = {
     return {
       ...styles,
       display: "inline-block",
-      minWidth: "200px",
       verticalAlign: "middle",
       width: '100%'
     };
